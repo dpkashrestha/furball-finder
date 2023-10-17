@@ -1,0 +1,14 @@
+.navbar {
+    height: 200px;
+    background: rgb(0,0,0);
+    background: linear-gradient(45deg, rgba(0,0,0,1) 0%, rgba(60,60,60,1) 52%, rgba(255,255,255,1) 100%);
+}
+
+#logo {
+    width: 300px;
+    max-height: 90%;
+}
+
+h1 {
+    text-align: center;
+}
