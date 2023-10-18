@@ -4,6 +4,18 @@ $(document).ready(function () {
     var dropdown = $(".dropdown");
     var searchButton = $(".searchButton");
 
+    // Toggle the dropdown menu when the trigger button is clicked
+    dropdownTrigger.click(function () {
+        dropdown.toggleClass("is-active");
+    });
+
+    // Close the dropdown when clicking outside of it
+    $(document).on("click", function (event) {
+        if (!$(event.target).closest(".dropdown").length) {
+            dropdown.removeClass("is-active");
+        }
+    });
+
     searchButton.click(function() {
         var data = [
             {
@@ -34,18 +46,6 @@ $(document).ready(function () {
         ];
         // call api and pass data to this function
         displayPets(data);
-    });
-
-    // Toggle the dropdown menu when the trigger button is clicked
-    dropdownTrigger.click(function () {
-        dropdown.toggleClass("is-active");
-    });
-
-    // Close the dropdown when clicking outside of it
-    $(document).on("click", function (event) {
-        if (!$(event.target).closest(".dropdown").length) {
-            dropdown.removeClass("is-active");
-        }
     });
 });
 
