@@ -12,8 +12,13 @@
 h1 {
     text-align: center;
 }
-.zipInput {
-    width: 100px;
+
+p {
+    text-align: center;
+}
+
+#zipInput {
+    width: 130px;
 }
 
 .slideshow {
@@ -37,5 +42,9 @@ h1 {
 
   .slide.active {
     opacity: 1;
+  }
+  
+  .dropdown {
+    padding-left: 15px;
   }
  
