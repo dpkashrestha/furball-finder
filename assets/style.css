@@ -13,12 +13,13 @@ h1 {
     text-align: center;
 }
 
-p {
-    text-align: center;
+#card-container{
+    display: flex;
+    flex-direction: row;
 }
 
-#zipInput {
-    width: 130px;
+.zipInput {
+    width: 100px;
 }
 
 .slideshow {
@@ -43,8 +44,3 @@ p {
   .slide.active {
     opacity: 1;
   }
-  
-  .dropdown {
-    padding-left: 15px;
-  }
- 
