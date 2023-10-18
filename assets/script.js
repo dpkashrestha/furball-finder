@@ -2,7 +2,7 @@ $(document).ready(function () {
     // Get references to the dropdown trigger and menu
     var dropdownTrigger = $(".dropdown-trigger");
     var dropdown = $(".dropdown");
-    var searchButton = $(".searchButton");
+    var searchButton = $("#searchButton");
 
     // Toggle the dropdown menu when the trigger button is clicked
     dropdownTrigger.click(function () {
@@ -17,6 +17,7 @@ $(document).ready(function () {
     });
 
     searchButton.click(function() {
+        console.log("search");
         var data = [
             {
                 title: 'Item 1',
