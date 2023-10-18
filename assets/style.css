@@ -12,6 +12,12 @@
 h1 {
     text-align: center;
 }
+
+#card-container{
+    display: flex;
+    flex-direction: row;
+}
+
 .zipInput {
     width: 100px;
 }

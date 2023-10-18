@@ -37,6 +37,8 @@ function getPets() {
     })
     .then(data => {
         console.log(data);
+
+        
     })
     .catch(error => {
         console.error(error.message);
@@ -70,3 +72,60 @@ setInterval(nextSlide, 3000);
 
 // Show the initial slide
 showSlide(currentSlide);
+
+displayPets();
+
+function displayPets(data){
+    var items = [
+        {
+            title: 'Item 1',
+            subtitle: 'Subtitle 1',
+            content: 'This is the content for Item 1.'
+        },
+        {
+            title: 'Item 2',
+            subtitle: 'Subtitle 2',
+            content: 'This is the content for Item 2.'
+        },
+        {
+            title: 'Item 3',
+            subtitle: 'Subtitle 3',
+            content: 'This is the content for Item 3.'
+        },
+        {
+            title: 'Item 4',
+            subtitle: 'Subtitle 4',
+            content: 'This is the content for Item 4.'
+        },
+        {
+            title: 'Item 5',
+            subtitle: 'Subtitle 5',
+            content: 'This is the content for Item 5.'
+        }
+    ];
+
+    var cardContainer = $('#card-container');
+
+    for(var i=0; i<items.length; i++){
+        var item = items[i];
+        
+        var card = $('<div>').addClass('card');
+        var cardContent = $('<div>').addClass('card-content');
+        var title = $('<p>').addClass('title').text(item.title);
+        var subtitle = $('<p>').addClass('subtitle').text(item.subtitle);
+        var content = $('<p>').text(item.content);
+
+        var cardImg = $('<div>').addClass('card-image');
+        var figure = $('<figure>').addClass('image is-4by3');
+        var img = $('<img>').attr('src','https://bulma.io/images/placeholders/1280x960.png').attr('alt','Placeholder image');
+
+        var cardFooter = $('<footer>').addClass('card-footer');
+         cardContent.append(title, subtitle, cardImg, content);
+        card.append(cardContent, cardFooter);
+        figure.append(img);
+        cardImg.append(figure);
+
+        cardContainer.append(card);
+    }
+}
+
