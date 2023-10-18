@@ -1,12 +1,27 @@
 $(document).ready(function () {
     // Get references to the dropdown trigger and menu
-    var dropdownTrigger = $(".dropdown-trigger");
     var dropdown = $(".dropdown");
     var searchButton = $("#searchButton");
 
+    var typeTrigger = $("#typeDropTrigger");
+    var sizeTrigger = $("#sizeDropTrigger");
+    var ageTrigger = $("#ageDropTrigger");
+
+    var typeDropdown = $("#typeDrop");
+    var sizeDropdown = $("#sizeDrop");
+    var ageDropdown = $("#ageDrop");
+
     // Toggle the dropdown menu when the trigger button is clicked
-    dropdownTrigger.click(function () {
-        dropdown.toggleClass("is-active");
+    typeTrigger.click(function () {
+        typeDropdown.toggleClass("is-active");
+    });
+
+    sizeTrigger.click(function () {
+        sizeDropdown.toggleClass("is-active");
+    });
+
+    ageTrigger.click(function () {
+        ageDropdown.toggleClass("is-active");
     });
 
     // Close the dropdown when clicking outside of it
@@ -17,8 +32,7 @@ $(document).ready(function () {
     });
 
     searchButton.click(function() {
-        console.log("search");
-        var data = [
+         var data = [
             {
                 title: 'Item 1',
                 subtitle: 'Subtitle 1',
@@ -124,7 +138,7 @@ function displayPets(data){
         var img = $('<img>').attr('src','https://bulma.io/images/placeholders/1280x960.png').attr('alt','Placeholder image');
 
         var cardFooter = $('<footer>').addClass('card-footer');
-         cardContent.append(title, subtitle, cardImg, content);
+        cardContent.append(title, subtitle, cardImg, content);
         card.append(cardContent, cardFooter);
         figure.append(img);
         cardImg.append(figure);
