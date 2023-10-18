@@ -2,6 +2,39 @@ $(document).ready(function () {
     // Get references to the dropdown trigger and menu
     var dropdownTrigger = $(".dropdown-trigger");
     var dropdown = $(".dropdown");
+    var searchButton = $(".searchButton");
+
+    searchButton.click(function() {
+        var data = [
+            {
+                title: 'Item 1',
+                subtitle: 'Subtitle 1',
+                content: 'This is the content for Item 1.'
+            },
+            {
+                title: 'Item 2',
+                subtitle: 'Subtitle 2',
+                content: 'This is the content for Item 2.'
+            },
+            {
+                title: 'Item 3',
+                subtitle: 'Subtitle 3',
+                content: 'This is the content for Item 3.'
+            },
+            {
+                title: 'Item 4',
+                subtitle: 'Subtitle 4',
+                content: 'This is the content for Item 4.'
+            },
+            {
+                title: 'Item 5',
+                subtitle: 'Subtitle 5',
+                content: 'This is the content for Item 5.'
+            }
+        ];
+        // call api and pass data to this function
+        displayPets(data);
+    });
 
     // Toggle the dropdown menu when the trigger button is clicked
     dropdownTrigger.click(function () {
@@ -73,41 +106,11 @@ setInterval(nextSlide, 3000);
 // Show the initial slide
 showSlide(currentSlide);
 
-displayPets();
-
 function displayPets(data){
-    var items = [
-        {
-            title: 'Item 1',
-            subtitle: 'Subtitle 1',
-            content: 'This is the content for Item 1.'
-        },
-        {
-            title: 'Item 2',
-            subtitle: 'Subtitle 2',
-            content: 'This is the content for Item 2.'
-        },
-        {
-            title: 'Item 3',
-            subtitle: 'Subtitle 3',
-            content: 'This is the content for Item 3.'
-        },
-        {
-            title: 'Item 4',
-            subtitle: 'Subtitle 4',
-            content: 'This is the content for Item 4.'
-        },
-        {
-            title: 'Item 5',
-            subtitle: 'Subtitle 5',
-            content: 'This is the content for Item 5.'
-        }
-    ];
-
     var cardContainer = $('#card-container');
 
-    for(var i=0; i<items.length; i++){
-        var item = items[i];
+    for(var i=0; i<data.length; i++){
+        var item = data[i];
         
         var card = $('<div>').addClass('card');
         var cardContent = $('<div>').addClass('card-content');
