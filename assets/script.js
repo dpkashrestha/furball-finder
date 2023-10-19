@@ -2,18 +2,32 @@ $(document).ready(function () {
     // Get references to the dropdown trigger and menu
     var dropdown = $(".dropdown");
     var searchButton = $("#searchButton");
+    var nextPageBtn = $("#nextButton");
+    var cardContainer = $('#card-container');
 
     var typeTrigger = $("#typeDropTrigger");
+    var breedTrigger =$("#breedDropTrigger");
+    var genderTrigger =$("#genderDropTrigger");
     var sizeTrigger = $("#sizeDropTrigger");
     var ageTrigger = $("#ageDropTrigger");
 
     var typeDropdown = $("#typeDrop");
+    var breedDropdown =$("#breedDrop");
+    var genderDropdown =$("#genderDrop");
     var sizeDropdown = $("#sizeDrop");
     var ageDropdown = $("#ageDrop");
 
     // Toggle the dropdown menu when the trigger button is clicked
     typeTrigger.click(function () {
         typeDropdown.toggleClass("is-active");
+    });
+
+    breedTrigger.click(function () {
+        breedDropdown.toggleClass("is-active");
+    });
+
+    genderTrigger.click(function () {
+        genderDropdown.toggleClass("is-active");
     });
 
     sizeTrigger.click(function () {
@@ -23,6 +37,50 @@ $(document).ready(function () {
     ageTrigger.click(function () {
         ageDropdown.toggleClass("is-active");
     });
+
+    nextPageBtn.click(function() {
+        removeDisplayPets();
+        //displayPets();
+    });
+
+
+    // Options clickable functions
+
+    typeDropdown.find('.dropdown-item').click(function() {
+        var selectedItemText = $(this).text();
+        
+        // Update the button text with the selected item
+        $("#selectedTypeText").text(selectedItemText);
+        
+        // Remove the 'is-active' class from the dropdown to close it
+        typeDropdown.removeClass("is-active");
+      });
+
+
+      breedDropdown.find('.dropdown-item').click(function() {
+        var selectedItemText = $(this).text();
+        $("#selectedBreedText").text(selectedItemText);
+        breedDropdown.removeClass("is-active");
+      });
+
+      genderDropdown.find('.dropdown-item').click(function() {
+        var selectedItemText = $(this).text();
+        $("#selectedGenderText").text(selectedItemText);
+        genderDropdown.removeClass("is-active");
+      });
+
+      sizeDropdown.find('.dropdown-item').click(function() {
+        var selectedItemText = $(this).text();
+        $("#selectedSizeText").text(selectedItemText);
+        sizeDropdown.removeClass("is-active");
+      });
+
+      ageDropdown.find('.dropdown-item').click(function() {
+        var selectedItemText = $(this).text();
+        $("#selectedAgeText").text(selectedItemText);
+        ageDropdown.removeClass("is-active");
+      });
+
 
     // Close the dropdown when clicking outside of it
     $(document).on("click", function (event) {
@@ -59,9 +117,38 @@ $(document).ready(function () {
                 content: 'This is the content for Item 5.'
             }
         ];
+        //show filter items
         // call api and pass data to this function
         displayPets(data);
     });
+
+    function displayPets(data){
+        for(var i=0; i<data.length; i++){
+            var item = data[i];
+            
+            var card = $('<div>').addClass('card');
+            var cardContent = $('<div>').addClass('card-content');
+            var title = $('<p>').addClass('title').text(item.title);
+            var subtitle = $('<p>').addClass('subtitle').text(item.subtitle);
+            var content = $('<p>').text(item.content);
+    
+            var cardImg = $('<div>').addClass('card-image');
+            var figure = $('<figure>').addClass('image is-4by3');
+            var img = $('<img>').attr('src','https://bulma.io/images/placeholders/1280x960.png').attr('alt','Placeholder image');
+    
+            var cardFooter = $('<footer>').addClass('card-footer');
+            cardContent.append(title, subtitle, cardImg, content);
+            card.append(cardContent, cardFooter);
+            figure.append(img);
+            cardImg.append(figure);
+            cardContainer.append(card);
+        }
+        
+    }
+    
+    function removeDisplayPets() {
+        cardContainer.empty();
+    }
 });
 
 var petAPI = "UmVWwKPzfv9io8hZanQhhe2T5CC3Ns1Bdf2F6JEevSuotzH35V";
@@ -120,30 +207,4 @@ setInterval(nextSlide, 3000);
 
 // Show the initial slide
 showSlide(currentSlide);
-
-function displayPets(data){
-    var cardContainer = $('#card-container');
-
-    for(var i=0; i<data.length; i++){
-        var item = data[i];
-        
-        var card = $('<div>').addClass('card');
-        var cardContent = $('<div>').addClass('card-content');
-        var title = $('<p>').addClass('title').text(item.title);
-        var subtitle = $('<p>').addClass('subtitle').text(item.subtitle);
-        var content = $('<p>').text(item.content);
-
-        var cardImg = $('<div>').addClass('card-image');
-        var figure = $('<figure>').addClass('image is-4by3');
-        var img = $('<img>').attr('src','https://bulma.io/images/placeholders/1280x960.png').attr('alt','Placeholder image');
-
-        var cardFooter = $('<footer>').addClass('card-footer');
-        cardContent.append(title, subtitle, cardImg, content);
-        card.append(cardContent, cardFooter);
-        figure.append(img);
-        cardImg.append(figure);
-
-        cardContainer.append(card);
-    }
-}
 
