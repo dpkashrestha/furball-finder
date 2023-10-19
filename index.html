@@ -35,9 +35,10 @@
     </p>
   </div>
     <div class="dropdown" id="typeDrop">
+      <label class="label">Animal Type:</label>
         <div class="dropdown-trigger" id="typeDropTrigger">
           <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-            <span>Animal Type</span>
+            <span id="selectedTypeText">Select type</span>
             <span class="icon is-small">
               <i class="fas fa-angle-down" aria-hidden="true"></i>
             </span>
@@ -54,58 +55,8 @@
           </div>
         </div>
       </div>
-      <div class="dropdown" id="sizeDrop">
-        <div class="dropdown-trigger" id="sizeDropTrigger">
-          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-            <span>Size</span>
-            <span class="icon is-small">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </button>
-        </div>
-        <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-          <div class="dropdown-content">
-            <a href="#" class="dropdown-item">
-              small
-            </a>
-            <a href="#" class="dropdown-item">
-              medium
-            </a>
-            <a href="#" class="dropdown-item">
-              large
-            </a>
-            <a href="#" class="dropdown-item">
-              xlarge
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="dropdown" id="ageDrop">
-        <div class="dropdown-trigger" id="ageDropTrigger">
-          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-            <span>Age</span>
-            <span class="icon is-small">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </button>
-        </div>
-        <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-          <div class="dropdown-content">
-            <a href="#" class="dropdown-item">
-              baby
-            </a>
-            <a href="#" class="dropdown-item">
-              young
-            </a>
-            <a href="#" class="dropdown-item">
-              adult
-            </a>
-            <a href="#" class="dropdown-item">
-              senior
-            </a>
-          </div>
-        </div>
-      </div>
+
+      
       <div class="dropdown" id="zipInput">
       <input class="input is-info" type="text" placeholder="Zip Code">
       </div>
@@ -114,7 +65,113 @@
       </div>
 
       <div id="map"></div>
-      <div id="card-container"></div>
+      <div id="searchResult">
+        <div id="filters">
+          <label class="label">Filters</label>
+          <div class="dropdown" id="breedDrop">
+            <label class="label">Breed:</label>
+            <div class="dropdown-trigger" id="breedDropTrigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                <span id="selectedBreedText">Select breed</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+              <div class="dropdown-content">
+                <a href="#" class="dropdown-item">
+                  Husky
+                </a>
+                <a href="#" class="dropdown-item">
+                  Pug
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="dropdown" id="genderDrop">
+            <label class="label">Gender:</label>
+            <div class="dropdown-trigger" id="genderDropTrigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                <span id="selectedGenderText">Select gender</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+              <div class="dropdown-content">
+                <a href="#" class="dropdown-item">
+                  Male
+                </a>
+                <a href="#" class="dropdown-item">
+                  Female
+                </a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="dropdown" id="sizeDrop">
+            <label class="label">Size:</label>
+            <div class="dropdown-trigger" id="sizeDropTrigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                <span id="selectedSizeText">Select size</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+              <div class="dropdown-content">
+                <a href="#" class="dropdown-item">
+                  small
+                </a>
+                <a href="#" class="dropdown-item">
+                  medium
+                </a>
+                <a href="#" class="dropdown-item">
+                  large
+                </a>
+                <a href="#" class="dropdown-item">
+                  xlarge
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="dropdown" id="ageDrop">
+            <label class="label">Age:</label>
+            <div class="dropdown-trigger" id="ageDropTrigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                <span id="selectedAgeText">Select age</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+              <div class="dropdown-content">
+                <a href="#" class="dropdown-item">
+                  baby
+                </a>
+                <a href="#" class="dropdown-item">
+                  young
+                </a>
+                <a href="#" class="dropdown-item">
+                  adult
+                </a>
+                <a href="#" class="dropdown-item">
+                  senior
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="card-container"></div>
+        <button id="nextButton">Next</button>
+      </div>
+      
+      
 
     
     
