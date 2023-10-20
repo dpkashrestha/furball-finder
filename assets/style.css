@@ -56,10 +56,14 @@ h1 {
 #filters {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 #searchResult {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 #container{
     height: 100vh;
@@ -68,7 +72,22 @@ h1 {
     align-items: center;
 
 }
+body{
+    text-align: center;
+    justify-content: center;
+  }
+
+
 #map{
-    height: 80vh;
-    width: 80vw;
+    height: 40vh;
+    width: 40vw;
+}
+
+footer{
+    align-items: center;
+    background-color:linear-gradient(45deg, rgba(0,0,0,1) 0%, rgba(60,60,60,1) 52%, rgba(255,255,255,1) 100%);
+    color: black;
+    text-align: center; flex-direction: row; text-wrap: nowrap; position: relative; 
+    bottom: 0;
+    width: 100%; 
 }
