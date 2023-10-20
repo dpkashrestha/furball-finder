@@ -59,6 +59,20 @@ h1 {
     align-items: center;
 
 }
+body{
+    text-align: center;
+    justify-content: center;
+  }
+  
+  footer{
+    align-items: center;
+    background-color:linear-gradient(45deg, rgba(0,0,0,1) 0%, rgba(60,60,60,1) 52%, rgba(255,255,255,1) 100%);
+    color: white;
+    text-align: center; flex-direction: row; text-wrap: nowrap; position: absolute; 
+    bottom: 0;
+    width: 100%;
+    
+}
 #map{
     height: 80vh;
     width: 80vw;
