@@ -153,7 +153,6 @@ $(document).ready(function () {
 
 var petAPI = "UmVWwKPzfv9io8hZanQhhe2T5CC3Ns1Bdf2F6JEevSuotzH35V";
 var petURL = "https://api.petfinder.com/v2/animals/";
-var petAccessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJVbVZXd0tQemZ2OWlvOGhaYW5RaGhlMlQ1Q0MzTnMxQmRmMkY2SkVldlN1b3R6SDM1ViIsImp0aSI6IjFiMGIwOTExOGQzOTBlYjNiZTkwNWU3MmMzOTg1ODliMzdkMTU4NzBiM2U0YjBhYWY5Y2Y4ODBkY2JmZjg2ZjFmYjA5NTEyNmU5MGI5ZWMwIiwiaWF0IjoxNjk3NTg2Mzk2LCJuYmYiOjE2OTc1ODYzOTYsImV4cCI6MTY5NzU4OTk5Niwic3ViIjoiIiwic2NvcGVzIjpbXX0.CJnpOPTwAqeZiOKThfaLcDSQN_bTTw8nGJtA_uzvFq3DK5HUzk2r3JyafL7XANM6QJjRJdpUjUB5hCYDAyLOeMlOlsKqYL0lrGfG-zCHIyKpOYtMCykkknFge37k9Xr-I9qqGJlr-v8rPgdNZ7Y4ENXSgN5hxj9jJhyV7nDp2p2OVY-8d95Ovcn23mpXut4tZ6uPQQcamktEDptod1BsaR3fUgejialKQsxcwQac8VP-KvN1xJ3vDn9JuAMJgb1p3Qywo6CKU1jhfPJ4lUvEjg1uSPSWWkV9x3dmP27CZCF_wAk0rQ5leW9pQeCkGjx4_BRe4A5WOFkrJ4REP6oVEQ"
 // Here are the docs : https://www.petfinder.com/developers/v2/docs/
 
 function getPets() {
@@ -179,7 +178,7 @@ function getPets() {
         console.error(error.message);
     });
 }
-getPets();
+
 //picture slideshow functionality:
 const slides = document.querySelectorAll('.slide');
 let currentSlide = 0;
@@ -222,13 +221,13 @@ function initMap(){
 initMap();
 //here is the access token storage
 // Assuming you have obtained the access token and have it in a variable
-var accessToken = "";
+var accessToken = localStorage.getItem("access_token");
 
 // Store the access token in local storage
 localStorage.setItem("access_token", accessToken);
 
 //This grabs the access token from the local storage.
-var accessToken = localStorage.getItem("access_token");
+
 
 document.addEventListener("DOMContentLoaded", function() {
   const clientId = "UmVWwKPzfv9io8hZanQhhe2T5CC3Ns1Bdf2F6JEevSuotzH35V";
@@ -263,3 +262,4 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 );
 console.log(accessToken);
+getPets();
