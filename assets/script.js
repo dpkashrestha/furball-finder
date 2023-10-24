@@ -40,7 +40,8 @@ $(document).ready(function () {
 
   // Options clickable functions
 
-  typeDropdown.find(".dropdown-item").click(function () {
+  typeDropdown.find(".dropdown-item").click(function (event) {
+    event.preventDefault();
     var selectedItemText = $(this).text();
 
     // Update the button text with the selected item
@@ -50,19 +51,22 @@ $(document).ready(function () {
     typeDropdown.removeClass("is-active");
   });
 
-  genderDropdown.find(".dropdown-item").click(function () {
+  genderDropdown.find(".dropdown-item").click(function (event) {
+    event.preventDefault();
     var selectedItemText = $(this).text();
     $("#selectedGenderText").text(selectedItemText);
     genderDropdown.removeClass("is-active");
   });
 
-  sizeDropdown.find(".dropdown-item").click(function () {
+  sizeDropdown.find(".dropdown-item").click(function (event) {
+    event.preventDefault();
     var selectedItemText = $(this).text();
     $("#selectedSizeText").text(selectedItemText);
     sizeDropdown.removeClass("is-active");
   });
 
-  ageDropdown.find(".dropdown-item").click(function () {
+  ageDropdown.find(".dropdown-item").click(function (event) {
+    event.preventDefault();
     var selectedItemText = $(this).text();
     $("#selectedAgeText").text(selectedItemText);
     ageDropdown.removeClass("is-active");
@@ -117,19 +121,29 @@ $(document).ready(function () {
       var cardContent = $("<div>").addClass("card-content");
       var name = $("<p>").addClass("name").text("Name: " + animal.name);
       var breed = $("<p>").addClass("breed").text("Breed: " + animal.breeds.primary);
-      var content = $("<p>").text("Description: " + animal.description);
+
+      var content;
+      if (animal.description) {
+        content = $("<p>").text("Description: " + animal.description);
+      } else {
+        content = $("<p>").text("Description: <empty>");
+      }
 
       var cardImg = $("<div>").addClass("card-image");
       var figure = $("<figure>").addClass("image is-4by3");
 
+      var img;
       if (animal.photos.length > 0) {
-        var img = $('<img>').addClass('photo').attr('src',animal.photos[0].medium).attr("alt", "Pet Image");
-    }
+        img = $("<img>").addClass("photo").attr("src",animal.photos[0].medium).attr("alt", "Pet Image");  
+      } else{
+        img = $("<img>").addClass("photo").attr("src","./assets/images/animal-placeholder.png").attr("alt", "Pet Image");  
+      }
       
-      cardContent.append(name, breed, content, cardImg);
-      card.append(cardContent,);
       figure.append(img);
       cardImg.append(figure);
+
+      cardContent.append(name, cardImg, breed, content);
+      card.append(cardContent,);
       cardContainer.append(card);
     }
   }
