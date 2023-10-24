@@ -20,6 +20,11 @@ html {
 
 h1 {
     text-align: center;
+    font-family: 'Playpen Sans', cursive;
+}
+
+p {
+  font-family: 'Playpen Sans', cursive;
 }
 
 #card-container {
@@ -91,6 +96,7 @@ min-height: 175px;
 body{
     text-align: center;
     justify-content: center;
+    font-family: 'Playpen Sans', cursive;
   }
 
 
@@ -106,4 +112,5 @@ footer{
     text-align: center; flex-direction: row; text-wrap: nowrap; position: relative; 
     bottom: 0;
     width: 100%; 
+    font-family: 'Playpen Sans', cursive;
 }
