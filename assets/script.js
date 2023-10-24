@@ -89,7 +89,40 @@ $(document).ready(function () {
 
   function getPets() {
     removeDisplayPets();
+    var selectedZip = $("zipCode").val();
+    var selectedType = $("#animalTypeDropdown").val();
+      var selectedGender = $("#animalGenderDropdown").val(); // Initialize selected gender
+      var selectedSize = $("#animalSizeDropdown").val(); // Initialize selected size
+      var selectedAge = $("#animalAgeDropdown").val(); // Initialize selected age
+      // Add the search parameters to the URL
+      console.log("Selected Type: " + selectedType);
+      console.log("selectedGender: " + selectedGender);
+      console.log("selectedSize: " + selectedSize);
+      console.log("selectedAge: " + selectedAge);
+      var searchParams = new URLSearchParams();
+      if (selectedType) {
+          searchParams.append("type", selectedType.toLowerCase());
+      }
+      if (selectedGender) {
+          searchParams.append("gender", selectedGender.toLowerCase());
+      }
+      if (selectedSize) {
+          searchParams.append("size", selectedSize.toLowerCase());
+      }
+      if (selectedAge) {
+          searchParams.append("age", selectedAge.toLowerCase());
+      }
     
+      // Add the search parameters to the URL
+      petURL += "?" + searchParams.toString();
+      
+      console.log(petURL);
+      console.log("Selected Type: " + selectedType);
+      console.log("Selected Gender: " + selectedGender);
+      console.log("Selected Size: " + selectedSize);
+      console.log("Selected Age: " + selectedAge);
+      console.log("selected zip: " + selectedZip);
+
     fetch(petURL, {
       method: "GET",
       headers: {
