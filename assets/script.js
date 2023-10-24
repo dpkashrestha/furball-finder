@@ -2,17 +2,14 @@ $(document).ready(function () {
   // Get references to the dropdown trigger and menu
   var dropdown = $(".dropdown");
   var searchButton = $("#searchButton");
-  var nextPageBtn = $("#nextButton");
-  var cardContainer = $("#card-container");
+//   var nextPageBtn = $("#nextButton");
 
   var typeTrigger = $("#typeDropTrigger");
-  var breedTrigger = $("#breedDropTrigger");
   var genderTrigger = $("#genderDropTrigger");
   var sizeTrigger = $("#sizeDropTrigger");
   var ageTrigger = $("#ageDropTrigger");
 
   var typeDropdown = $("#typeDrop");
-  var breedDropdown = $("#breedDrop");
   var genderDropdown = $("#genderDrop");
   var sizeDropdown = $("#sizeDrop");
   var ageDropdown = $("#ageDrop");
@@ -20,10 +17,6 @@ $(document).ready(function () {
   // Toggle the dropdown menu when the trigger button is clicked
   typeTrigger.click(function () {
     typeDropdown.toggleClass("is-active");
-  });
-
-  breedTrigger.click(function () {
-    breedDropdown.toggleClass("is-active");
   });
 
   genderTrigger.click(function () {
@@ -38,10 +31,12 @@ $(document).ready(function () {
     ageDropdown.toggleClass("is-active");
   });
 
-  nextPageBtn.click(function () {
-    removeDisplayPets();
-    //displayPets();
-  });
+ 
+
+//   nextPageBtn.click(function () {
+//     removeDisplayPets();
+//     //displayPets();
+//   });
 
   // Options clickable functions
 
@@ -53,12 +48,6 @@ $(document).ready(function () {
 
     // Remove the 'is-active' class from the dropdown to close it
     typeDropdown.removeClass("is-active");
-  });
-
-  breedDropdown.find(".dropdown-item").click(function () {
-    var selectedItemText = $(this).text();
-    $("#selectedBreedText").text(selectedItemText);
-    breedDropdown.removeClass("is-active");
   });
 
   genderDropdown.find(".dropdown-item").click(function () {
@@ -86,99 +75,71 @@ $(document).ready(function () {
     }
   });
 
-  searchButton.click(function () {
-    var data = [
-      {
-        title: "Item 1",
-        subtitle: "Subtitle 1",
-        content: "This is the content for Item 1.",
+  searchButton.click(getPets);
+  
+
+  var cardContainer = $("#card-container");
+  var petAPI = "UmVWwKPzfv9io8hZanQhhe2T5CC3Ns1Bdf2F6JEevSuotzH35V";
+  var petURL = "https://api.petfinder.com/v2/animals/";
+  // Here are the docs : https://www.petfinder.com/developers/v2/docs/
+
+  function getPets() {
+    removeDisplayPets();
+    
+    fetch(petURL, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
       },
-      {
-        title: "Item 2",
-        subtitle: "Subtitle 2",
-        content: "This is the content for Item 2.",
-      },
-      {
-        title: "Item 3",
-        subtitle: "Subtitle 3",
-        content: "This is the content for Item 3.",
-      },
-      {
-        title: "Item 4",
-        subtitle: "Subtitle 4",
-        content: "This is the content for Item 4.",
-      },
-      {
-        title: "Item 5",
-        subtitle: "Subtitle 5",
-        content: "This is the content for Item 5.",
-      },
-    ];
-    //show filter items
-    // call api and pass data to this function
-    displayPets(data);
-  });
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Request failed with status: " + response.status);
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        displayPets(data);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  }
 
   function displayPets(data) {
-    var card = $("<div>").addClass("card");
-    var cardContent = $("<div>").addClass("card-content");
-    var type = $("<p>")
-      .addClass("type")
-      .text("Type: " + data[0].title);
-    console.log(data[0].title);
-    var location = $("<p>")
-      .addClass("location")
-      .text("Location: " + data.location);
-    var breed = $("<p>")
-      .addClass("breed")
-      .text("Breed: " + data.breed);
-    var content = $("<p>").text("Description: " + data.description);
+    var animals = data.animals;
+    for (var i = 0; i < animals.length; i++) {
+      var animal = animals[i];
 
-    var cardImg = $("<div>").addClass("card-image");
-    var figure = $("<figure>").addClass("image is-4by3");
+      var card = $("<div>").addClass("card");
+      var cardContent = $("<div>").addClass("card-content");
+      var name = $("<p>").addClass("name").text("Name: " + animal.name);
+      var breed = $("<p>").addClass("breed").text("Breed: " + animal.breeds.primary);
+      var content = $("<p>").text("Description: " + animal.description);
 
-    var img = $("<img>")
-      //.attr("src", data[0].photos.url)
-      .attr("alt", "Pet Image");
+      var cardImg = $("<div>").addClass("card-image");
+      var figure = $("<figure>").addClass("image is-4by3");
 
-    var cardFooter = $("<footer>").addClass("card-footer");
-    cardContent.append(type, location, breed, content, cardImg);
-    card.append(cardContent, cardFooter);
-    figure.append(img);
-    cardImg.append(figure);
-    cardContainer.append(card);
+      if (animal.photos.length > 0) {
+        var img = $('<img>').addClass('photo').attr('src',animal.photos[0].medium).attr("alt", "Pet Image");
+    }
+      
+      cardContent.append(name, breed, content, cardImg);
+      card.append(cardContent,);
+      figure.append(img);
+      cardImg.append(figure);
+      cardContainer.append(card);
+    }
   }
 
   function removeDisplayPets() {
     cardContainer.empty();
+    
   }
 });
 
-var petAPI = "UmVWwKPzfv9io8hZanQhhe2T5CC3Ns1Bdf2F6JEevSuotzH35V";
-var petURL = "https://api.petfinder.com/v2/animals/";
-// Here are the docs : https://www.petfinder.com/developers/v2/docs/
-
-function getPets() {
-  fetch(petURL, {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  })
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error("Request failed with status: " + response.status);
-      }
-    })
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => {
-      console.error(error.message);
-    });
-}
 
 //picture slideshow functionality:
 const slides = document.querySelectorAll(".slide");
@@ -258,4 +219,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 console.log(accessToken);
-getPets();
+// getPets();
