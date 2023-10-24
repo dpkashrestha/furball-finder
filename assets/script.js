@@ -117,19 +117,29 @@ $(document).ready(function () {
       var cardContent = $("<div>").addClass("card-content");
       var name = $("<p>").addClass("name").text("Name: " + animal.name);
       var breed = $("<p>").addClass("breed").text("Breed: " + animal.breeds.primary);
-      var content = $("<p>").text("Description: " + animal.description);
+
+      var content;
+      if (animal.description) {
+        content = $("<p>").text("Description: " + animal.description);
+      } else {
+        content = $("<p>").text("Description: <empty>");
+      }
 
       var cardImg = $("<div>").addClass("card-image");
       var figure = $("<figure>").addClass("image is-4by3");
 
+      var img;
       if (animal.photos.length > 0) {
-        var img = $('<img>').addClass('photo').attr('src',animal.photos[0].medium).attr("alt", "Pet Image");
-    }
+        img = $("<img>").addClass("photo").attr("src",animal.photos[0].medium).attr("alt", "Pet Image");  
+      } else{
+        img = $("<img>").addClass("photo").attr("src","./assets/images/animal-placeholder.png").attr("alt", "Pet Image");  
+      }
       
-      cardContent.append(name, breed, content, cardImg);
-      card.append(cardContent,);
       figure.append(img);
       cardImg.append(figure);
+
+      cardContent.append(name, cardImg, breed, content);
+      card.append(cardContent,);
       cardContainer.append(card);
     }
   }
