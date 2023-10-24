@@ -40,7 +40,8 @@ $(document).ready(function () {
 
   // Options clickable functions
 
-  typeDropdown.find(".dropdown-item").click(function () {
+  typeDropdown.find(".dropdown-item").click(function (event) {
+    event.preventDefault();
     var selectedItemText = $(this).text();
 
     // Update the button text with the selected item
@@ -50,19 +51,22 @@ $(document).ready(function () {
     typeDropdown.removeClass("is-active");
   });
 
-  genderDropdown.find(".dropdown-item").click(function () {
+  genderDropdown.find(".dropdown-item").click(function (event) {
+    event.preventDefault();
     var selectedItemText = $(this).text();
     $("#selectedGenderText").text(selectedItemText);
     genderDropdown.removeClass("is-active");
   });
 
-  sizeDropdown.find(".dropdown-item").click(function () {
+  sizeDropdown.find(".dropdown-item").click(function (event) {
+    event.preventDefault();
     var selectedItemText = $(this).text();
     $("#selectedSizeText").text(selectedItemText);
     sizeDropdown.removeClass("is-active");
   });
 
-  ageDropdown.find(".dropdown-item").click(function () {
+  ageDropdown.find(".dropdown-item").click(function (event) {
+    event.preventDefault();
     var selectedItemText = $(this).text();
     $("#selectedAgeText").text(selectedItemText);
     ageDropdown.removeClass("is-active");
