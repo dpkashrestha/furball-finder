@@ -6,13 +6,11 @@ $(document).ready(function () {
     var cardContainer = $('#card-container');
 
     var typeTrigger = $("#typeDropTrigger");
-    var breedTrigger =$("#breedDropTrigger");
     var genderTrigger =$("#genderDropTrigger");
     var sizeTrigger = $("#sizeDropTrigger");
     var ageTrigger = $("#ageDropTrigger");
 
     var typeDropdown = $("#typeDrop");
-    var breedDropdown =$("#breedDrop");
     var genderDropdown =$("#genderDrop");
     var sizeDropdown = $("#sizeDrop");
     var ageDropdown = $("#ageDrop");
@@ -20,10 +18,6 @@ $(document).ready(function () {
     // Toggle the dropdown menu when the trigger button is clicked
     typeTrigger.click(function () {
         typeDropdown.toggleClass("is-active");
-    });
-
-    breedTrigger.click(function () {
-        breedDropdown.toggleClass("is-active");
     });
 
     genderTrigger.click(function () {
@@ -54,13 +48,6 @@ $(document).ready(function () {
         
         // Remove the 'is-active' class from the dropdown to close it
         typeDropdown.removeClass("is-active");
-      });
-
-
-      breedDropdown.find('.dropdown-item').click(function() {
-        var selectedItemText = $(this).text();
-        $("#selectedBreedText").text(selectedItemText);
-        breedDropdown.removeClass("is-active");
       });
 
       genderDropdown.find('.dropdown-item').click(function() {
