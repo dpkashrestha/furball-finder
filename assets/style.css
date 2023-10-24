@@ -22,10 +22,26 @@ h1 {
     text-align: center;
 }
 
-#card-container{
+#card-container {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
+
+.card{
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 400px;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.photo{
+min-width: 250px;
+min-height: 175px;
+}
+
 
 .zipInput {
     width: 100px;
