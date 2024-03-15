@@ -65,23 +65,24 @@
         <button
           class="button"
           aria-haspopup="true"
-          aria-controls="dropdown-menu3"
+          aria-controls="dropdown-type"
         >
-          <span id="selectedTypeText">Select type</span>
+          <span id="selected-animal-type"></span>
           <span class="icon is-small">
             <i class="fas fa-angle-down" aria-hidden="true"></i>
           </span>
         </button>
       </div>
-      <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-        <select id="animalTypeDropdown" class="dropdown-content">
-          <option value="dog" class="dropdown-item"> Dog </option>
-          <option value="cat" class="dropdown-item"> Cat </option>
-        </select>
+      <div class="dropdown-menu" id="dropdown-type" role="menu">
+        <div class="dropdown-content">
+          <a href="#" class="dropdown-item">Dog</a>
+          <a href="#" class="dropdown-item">Cat</a>
+        </div>
       </div>
     </div>
-    <div class="dropdown" id="zipInput">
-      <input class="input is-info" type="text" id="zipCode" placeholder="Zip Code" />
+    <div class="dropdown" id="zip-input">
+      <input class="input is-info" type="text" id="zip-code" placeholder="Zip Code" />
+      <!-- <input class="input is-info" type="text" id="zipCode" placeholder="Zip Code" /> -->
     </div>
     <div class="dropdown" id="searchButton">
       <button class="button is-primary is-rounded">Search!</button>
@@ -95,19 +96,19 @@
             <button
               class="button"
               aria-haspopup="true"
-              aria-controls="dropdown-menu3"
+              aria-controls="dropdown-gender"
             >
-              <span id="selectedGenderText">Select gender</span>
+              <span id="selected-gender"></span>
               <span class="icon is-small">
                 <i class="fas fa-angle-down" aria-hidden="true"></i>
               </span>
             </button>
           </div>
-          <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-            <select id="animalGenderDropdown"class="dropdown-content">
-              <option value="male"class="dropdown-item"> male </option>
-              <option value="female"class="dropdown-item"> female </option>
-            </select>
+          <div class="dropdown-menu" id="dropdown-gender" role="menu">
+            <div class="dropdown-content">
+              <a href="#" class="dropdown-item">Male</a>
+              <a href="#" class="dropdown-item">Female</a>
+            </div>
           </div>
         </div>
 
@@ -117,21 +118,21 @@
             <button
               class="button"
               aria-haspopup="true"
-              aria-controls="dropdown-menu3"
+              aria-controls="dropdown-size"
             >
-              <span id="selectedSizeText">Select size</span>
+              <span id="selected-size"></span>
               <span class="icon is-small">
                 <i class="fas fa-angle-down" aria-hidden="true"></i>
               </span>
             </button>
           </div>
-          <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-            <select id="animalSizeDropdown"class="dropdown-content">
-              <option value="small"class="dropdown-item"> small </option>
-              <option value="medium"class="dropdown-item"> medium </option>
-              <option value= "large"class="dropdown-item"> large </option>
-              <option value= "xlarge"class="dropdown-item"> xlarge </option>
-            </select>
+          <div class="dropdown-menu" id="dropdown-size" role="menu">
+            <div class="dropdown-content">
+              <a href="#" class="dropdown-item">Small</a>
+              <a href="#" class="dropdown-item">Medium</a>
+              <a href="#" class="dropdown-item">Large</a>
+              <a href="#" class="dropdown-item">XLarge</a>
+            </div>
           </div>
         </div>
         <div class="dropdown" id="ageDrop">
@@ -140,21 +141,21 @@
             <button
               class="button"
               aria-haspopup="true"
-              aria-controls="dropdown-menu3"
+              aria-controls="dropdown-age"
             >
-              <span id="selectedAgeText">Select age</span>
+              <span id="selected-age"></span>
               <span class="icon is-small">
                 <i class="fas fa-angle-down" aria-hidden="true"></i>
               </span>
             </button>
           </div>
-          <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-            <select id="animalAgeDropdown" class="dropdown-content">
-              <option value="baby"class="dropdown-item"> baby </option>
-              <option value="young"class="dropdown-item"> young </option>
-              <option value="adult"class="dropdown-item"> adult </option>
-              <option value="senior"class="dropdown-item"> senior </option>
-            </select>
+          <div class="dropdown-menu" id="dropdown-age" role="menu">
+            <div class="dropdown-content">
+              <a href="#" class="dropdown-item">Baby</a>
+              <a href="#" class="dropdown-item">Young</a>
+              <a href="#" class="dropdown-item">Adult</a>
+              <a href="#" class="dropdown-item">Senior</a>
+            </div>
           </div>
           </div>
         </div>

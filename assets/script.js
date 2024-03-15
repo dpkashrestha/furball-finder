@@ -2,7 +2,7 @@ $(document).ready(function () {
   // Get references to the dropdown trigger and menu
   var dropdown = $(".dropdown");
   var searchButton = $("#searchButton");
-//   var nextPageBtn = $("#nextButton");
+  //   var nextPageBtn = $("#nextButton");
 
   var typeTrigger = $("#typeDropTrigger");
   var genderTrigger = $("#genderDropTrigger");
@@ -31,12 +31,10 @@ $(document).ready(function () {
     ageDropdown.toggleClass("is-active");
   });
 
- 
-
-//   nextPageBtn.click(function () {
-//     removeDisplayPets();
-//     //displayPets();
-//   });
+  //   nextPageBtn.click(function () {
+  //     removeDisplayPets();
+  //     //displayPets();
+  //   });
 
   // Options clickable functions
 
@@ -45,7 +43,7 @@ $(document).ready(function () {
     var selectedItemText = $(this).text();
 
     // Update the button text with the selected item
-    $("#selectedTypeText").text(selectedItemText);
+    $("#selected-animal-type").text(selectedItemText);
 
     // Remove the 'is-active' class from the dropdown to close it
     typeDropdown.removeClass("is-active");
@@ -54,21 +52,21 @@ $(document).ready(function () {
   genderDropdown.find(".dropdown-item").click(function (event) {
     event.preventDefault();
     var selectedItemText = $(this).text();
-    $("#selectedGenderText").text(selectedItemText);
+    $("#selected-gender").text(selectedItemText);
     genderDropdown.removeClass("is-active");
   });
 
   sizeDropdown.find(".dropdown-item").click(function (event) {
     event.preventDefault();
     var selectedItemText = $(this).text();
-    $("#selectedSizeText").text(selectedItemText);
+    $("#selected-size").text(selectedItemText);
     sizeDropdown.removeClass("is-active");
   });
 
   ageDropdown.find(".dropdown-item").click(function (event) {
     event.preventDefault();
     var selectedItemText = $(this).text();
-    $("#selectedAgeText").text(selectedItemText);
+    $("#selected-age").text(selectedItemText);
     ageDropdown.removeClass("is-active");
   });
 
@@ -80,48 +78,40 @@ $(document).ready(function () {
   });
 
   searchButton.click(getPets);
-  
 
   var cardContainer = $("#card-container");
-  var petAPI = "UmVWwKPzfv9io8hZanQhhe2T5CC3Ns1Bdf2F6JEevSuotzH35V";
-  var petURL = "https://api.petfinder.com/v2/animals/";
   // Here are the docs : https://www.petfinder.com/developers/v2/docs/
+  var petAPI = "UmVWwKPzfv9io8hZanQhhe2T5CC3Ns1Bdf2F6JEevSuotzH35V";
 
   function getPets() {
     removeDisplayPets();
-    var selectedZip = $("zipCode").val();
-    var selectedType = $("#animalTypeDropdown").val();
-      var selectedGender = $("#animalGenderDropdown").val(); // Initialize selected gender
-      var selectedSize = $("#animalSizeDropdown").val(); // Initialize selected size
-      var selectedAge = $("#animalAgeDropdown").val(); // Initialize selected age
-      // Add the search parameters to the URL
-      console.log("Selected Type: " + selectedType);
-      console.log("selectedGender: " + selectedGender);
-      console.log("selectedSize: " + selectedSize);
-      console.log("selectedAge: " + selectedAge);
-      var searchParams = new URLSearchParams();
-      if (selectedType) {
-          searchParams.append("type", selectedType.toLowerCase());
-      }
-      if (selectedGender) {
-          searchParams.append("gender", selectedGender.toLowerCase());
-      }
-      if (selectedSize) {
-          searchParams.append("size", selectedSize.toLowerCase());
-      }
-      if (selectedAge) {
-          searchParams.append("age", selectedAge.toLowerCase());
-      }
-    
-      // Add the search parameters to the URL
-      petURL += "?" + searchParams.toString();
-      
-      console.log(petURL);
-      console.log("Selected Type: " + selectedType);
-      console.log("Selected Gender: " + selectedGender);
-      console.log("Selected Size: " + selectedSize);
-      console.log("Selected Age: " + selectedAge);
-      console.log("selected zip: " + selectedZip);
+    var petURL = "https://api.petfinder.com/v2/animals/";
+
+    var selectedZip = $("#zip-code").val();
+    var selectedType = $("#selected-animal-type").text();
+    var selectedGender = $("#selected-gender").text();
+    var selectedSize = $("#selected-size").text();
+    var selectedAge = $("#selected-age").text();
+
+    console.log("selectedGender:", selectedGender);
+
+    // Add the search parameters to the URL
+    var searchParams = new URLSearchParams();
+    if (selectedType) {
+      searchParams.append("type", selectedType.toLowerCase());
+    }
+    if (selectedGender) {
+      searchParams.append("gender", selectedGender.toLowerCase());
+    }
+    if (selectedSize) {
+      searchParams.append("size", selectedSize.toLowerCase());
+    }
+    if (selectedAge) {
+      searchParams.append("age", selectedAge.toLowerCase());
+    }
+
+    // Add the search parameters to the URL
+    petURL += "?" + searchParams.toString();
 
     fetch(petURL, {
       method: "GET",
@@ -152,8 +142,12 @@ $(document).ready(function () {
 
       var card = $("<div>").addClass("card");
       var cardContent = $("<div>").addClass("card-content");
-      var name = $("<p>").addClass("name").text("Name: " + animal.name);
-      var breed = $("<p>").addClass("breed").text("Breed: " + animal.breeds.primary);
+      var name = $("<p>")
+        .addClass("name")
+        .text("Name: " + animal.name);
+      var breed = $("<p>")
+        .addClass("breed")
+        .text("Breed: " + animal.breeds.primary);
 
       var content;
       if (animal.description) {
@@ -167,26 +161,30 @@ $(document).ready(function () {
 
       var img;
       if (animal.photos.length > 0) {
-        img = $("<img>").addClass("photo").attr("src",animal.photos[0].medium).attr("alt", "Pet Image");  
-      } else{
-        img = $("<img>").addClass("photo").attr("src","./assets/images/animal-placeholder.png").attr("alt", "Pet Image");  
+        img = $("<img>")
+          .addClass("photo")
+          .attr("src", animal.photos[0].medium)
+          .attr("alt", "Pet Image");
+      } else {
+        img = $("<img>")
+          .addClass("photo")
+          .attr("src", "./assets/images/animal-placeholder.png")
+          .attr("alt", "Pet Image");
       }
-      
+
       figure.append(img);
       cardImg.append(figure);
 
       cardContent.append(name, cardImg, breed, content);
-      card.append(cardContent,);
+      card.append(cardContent);
       cardContainer.append(card);
     }
   }
 
   function removeDisplayPets() {
     cardContainer.empty();
-    
   }
 });
-
 
 //picture slideshow functionality:
 const slides = document.querySelectorAll(".slide");
