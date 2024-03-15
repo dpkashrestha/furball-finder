@@ -47,7 +47,7 @@ As someone who is looking to adopt a pet, I would like to have a convenient opti
 
 ## Deployed Application
 
-https://github.com/dpkashrestha/furball-finder
+https://dpkashrestha.github.io/furball-finder/
 
 #### Screenshot
 
